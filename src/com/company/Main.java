@@ -34,7 +34,7 @@ public class Main {
     public static void gameStep() {
         int step = 0;
 
-        if (botPlay && selector == 0) {
+        if (selector == 0) {
             step = botAlgorithm.stepBot(matches);
             System.out.println(gameMessages.botMove(step));
         } else {
@@ -49,13 +49,11 @@ public class Main {
     }
 
     public static void printPartWinner() {
-        if (botPlay && matches == 1) {
+        if (matches == 1) {
             System.out.println("\n\n************\n" + gameMessages.playerWin("Бот "));
             System.out.print(gameMessages.oneMatch("Игрок") + "\n************\n\n");
             restartGame();
-        }
-
-        if (matches < 1) {
+        }else{
             System.out.println("\n\n************\n" + gameMessages.playerWin("Игрок"));
             System.out.print(gameMessages.zeroMatches("Игрок") + "\n************\n\n");
         }
@@ -64,6 +62,7 @@ public class Main {
     }
 
     public static void restartGame() {
+        System.out.println("На столе осталось 20 спичек");
         selector = 0;
         matches = 20;
         gameStep();
